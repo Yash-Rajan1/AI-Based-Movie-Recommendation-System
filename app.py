@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import os
 import requests
+import gdown
 
 # https://drive.google.com/file/d/19akgab2plarRI-ehmBdfJAZvkPKsQG52/view?usp=drive_link
 file_id = '19akgab2plarRI-ehmBdfJAZvkPKsQG52'
@@ -53,3 +54,4 @@ if st.button('Recommend'):
             st.text(names[i])
 
             st.image(posters[i])
+
