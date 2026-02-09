@@ -1,8 +1,16 @@
 import streamlit as st
 import pickle
-
-API_KEY = "2b05d1b068cec98826e600c44051b66d"
+import os
 import requests
+
+# https://drive.google.com/file/d/19akgab2plarRI-ehmBdfJAZvkPKsQG52/view?usp=drive_link
+file_id = '19akgab2plarRI-ehmBdfJAZvkPKsQG52'
+url = f'https://drive.google.com/uc?id={file_id}'
+output = 'similarity.pkl'
+if not os.path.exists(output):
+    with st.spinner('Downloading similarity matrix... this might take a minute.'):
+        gdown.download(url,output,quiet=False)
+API_KEY = "2b05d1b068cec98826e600c44051b66d"
 
 def fetch_poster(movie_id):
     url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}&language=en-US"
@@ -27,7 +35,7 @@ def recommend(movie):
         recommended_posters.append(fetch_poster(movie_id))
     return recommended_movies,recommended_posters
 
-similarity = pickle.load(open('similarity.pkl','rb'))
+similarity = pickle.load(open(output,'rb'))
 
 movies = pickle.load(open('movies.pkl','rb'))
 
@@ -43,4 +51,5 @@ if st.button('Recommend'):
     for i in range(5):
         with cols[i]:
             st.text(names[i])
+
             st.image(posters[i])
