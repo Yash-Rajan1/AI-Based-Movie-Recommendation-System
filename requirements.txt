@@ -1,4 +1,6 @@
 streamlit
 nltk
 pandas
+requests
 scikit-learn
+gdown
