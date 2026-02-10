@@ -11,7 +11,7 @@ output = 'similarity.pkl'
 if not os.path.exists(output):
     with st.spinner('Downloading similarity matrix... this might take a minute.'):
         gdown.download(url,output,quiet=False)
-API_KEY = "2b05d1b068cec98826e600c44051b66d"
+API_KEY = st.secrets["tmdb_api_key"]
 
 def fetch_poster(movie_id):
     url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_KEY}&language=en-US"
@@ -54,4 +54,5 @@ if st.button('Recommend'):
             st.text(names[i])
 
             st.image(posters[i])
+
 
