@@ -36,3 +36,10 @@ Due to the size of the similarity matrix (~400MB+), standard GitHub uploads and 
 * *Storage:* The similarity.pkl is hosted on Google Drive and downloaded programmatically.
 * *Memory Management:* Used @st.cache_resource to ensure the matrix is loaded into RAM only once, preventing 502 Bad Gateway errors.
 
+### 📂 Project Structure
+#### ├── app.py              # Main Streamlit application script
+#### ├── movies.pkl          # Pre-processed movie dataframe
+#### ├── requirements.txt    # List of required Python packages
+#### ├── README.md           # Project documentation
+#### └── similarity.pkl      # (Downloaded via gdown at runtime)
+
